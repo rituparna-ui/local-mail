@@ -8,6 +8,7 @@ const {
   onMailFrom,
   onRcptTo,
   onAuth,
+  onData,
 } = require("./src/controllers/mail");
 const { upsertAdmin } = require("./src/utils/seed");
 
@@ -20,6 +21,7 @@ const smtpServer = new SMTPServer({
   onConnect,
   onMailFrom,
   onRcptTo,
+  onData,
 });
 
 MONGO()

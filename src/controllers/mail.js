@@ -1,5 +1,5 @@
 exports.onAuth = (auth, session, cb) => {
-  cb(null, { data: null, user: null });
+  cb(null, { data: {}, user: "" });
 };
 
 exports.onConnect = (session, cb) => {
@@ -7,9 +7,16 @@ exports.onConnect = (session, cb) => {
 };
 
 exports.onMailFrom = (address, session, cb) => {
-  cb();
+  cb(null);
 };
 
 exports.onRcptTo = (address, session, cb) => {
-  cb();
+  cb(null);
+};
+
+exports.onData = (stream, session, cb) => {
+  stream.on("data", (data) => {
+    console.log(data.toString());
+  });
+  stream.on("end", cb);
 };
