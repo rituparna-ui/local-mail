@@ -12,6 +12,7 @@ exports.signupValidation = () => {
     body("email")
       .isEmail()
       .withMessage("Please enter a valid email")
+      .normalizeEmail()
       .custom((val, { req }) => {
         return User.findOne({ email: val }).then((user) => {
           if (user) {
