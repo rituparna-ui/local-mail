@@ -24,6 +24,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.19.2",
+    "express-validator": "^7.0.1",
     "mongoose": "^8.3.0",
     "smtp-server": "^3.13.3"
   },

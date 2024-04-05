@@ -12,10 +12,16 @@ const {
 } = require("./src/controllers/mail");
 const { upsertAdmin } = require("./src/utils/seed");
 const apiRoutes = require("./src/routes");
+const notFound = require("./src/utils/errors/notFound");
+const errorHandler = require("./src/utils/errors/errorHandler");
 
 const app = express();
 
+app.use(express.json());
 app.use("/api/v1", apiRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const smtpServer = new SMTPServer({
   allowInsecureAuth: true,
