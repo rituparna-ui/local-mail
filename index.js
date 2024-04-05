@@ -11,8 +11,11 @@ const {
   onData,
 } = require("./src/controllers/mail");
 const { upsertAdmin } = require("./src/utils/seed");
+const apiRoutes = require("./src/routes");
 
 const app = express();
+
+app.use("/api/v1", apiRoutes);
 
 const smtpServer = new SMTPServer({
   allowInsecureAuth: true,
