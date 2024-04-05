@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { simpleParser } = require("mailparser");
 
 const User = require("./../models/user");
+const Mail = require("./../models/mail");
 
 exports.onAuth = async (auth, session, cb) => {
   const { username: email, password } = auth;
@@ -35,7 +36,7 @@ exports.onRcptTo = (address, session, cb) => {
 exports.onData = (stream, session, cb) => {
   stream.on("data", async (data) => {
     const parsed = await simpleParser(data);
-    console.log(parsed);
+    await Mail.create(parsed);
   });
   stream.on("end", cb);
 };
