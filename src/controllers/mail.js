@@ -4,7 +4,9 @@ const User = require("./../models/user");
 
 exports.onAuth = async (auth, session, cb) => {
   const { username: email, password } = auth;
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email, isDeleted: false }).select(
+    "+password"
+  );
   if (!user) {
     return cb("Invalid Email or Password", null);
   }

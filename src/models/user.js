@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, index: true, unique: true },
     password: { type: String, required: true, select: false },
     role: { type: String, default: "USER" },
+    isDeleted: { type: Boolean, default: false, required: true },
   },
   { timestamps: true }
 );
