@@ -34,9 +34,16 @@ exports.onRcptTo = (address, session, cb) => {
 };
 
 exports.onData = (stream, session, cb) => {
-  stream.on("data", async (data) => {
-    const parsed = await simpleParser(data);
-    await Mail.create(parsed);
+  const body = [];
+  stream.on("data", (data) => {
+    // const parsed = await simpleParser(data);
+    // await Mail.create(parsed);
+    body.push(data);
   });
-  stream.on("end", cb);
+  stream.on("end", async () => {
+    const concatResult = Buffer.concat(body).toString();
+    const parsedMail = await simpleParser(concatResult);
+    await Mail.create(parsedMail);
+    cb();
+  });
 };
