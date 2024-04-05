@@ -16,7 +16,7 @@ const app = express();
 
 const smtpServer = new SMTPServer({
   allowInsecureAuth: true,
-  authOptional: true,
+  // authOptional: true,
   onAuth,
   onConnect,
   onMailFrom,

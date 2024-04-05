@@ -1,5 +1,20 @@
-exports.onAuth = (auth, session, cb) => {
-  cb(null, { data: {}, user: "" });
+const bcrypt = require("bcryptjs");
+
+const User = require("./../models/user");
+
+exports.onAuth = async (auth, session, cb) => {
+  const { username: email, pass } = auth;
+  const user = await User.findOne({ email }).select("+password");
+  if (!user) {
+    return cb("Invalid Email or Password", null);
+  }
+
+  const isPasswordCorrect = await bcrypt.compare(pass, user.password);
+  if (!isPasswordCorrect) {
+    return cb("Invalid Email or Password", null);
+  }
+
+  return cb(null, { user: { email } });
 };
 
 exports.onConnect = (session, cb) => {
