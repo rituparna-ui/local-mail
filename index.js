@@ -3,10 +3,23 @@ const express = require("express");
 
 const MONGO = require("./src/utils/db");
 const { SMTP_PORT, PORT } = require("./configs/dev");
+const {
+  onConnect,
+  onMailFrom,
+  onRcptTo,
+  onAuth,
+} = require("./src/controllers/mail");
 
 const app = express();
 
-const smtpServer = new SMTPServer({});
+const smtpServer = new SMTPServer({
+  allowInsecureAuth: true,
+  authOptional: true,
+  onAuth,
+  onConnect,
+  onMailFrom,
+  onRcptTo,
+});
 
 MONGO()
   .then(() => {
