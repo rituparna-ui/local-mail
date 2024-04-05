@@ -9,6 +9,7 @@ const {
   onRcptTo,
   onAuth,
 } = require("./src/controllers/mail");
+const { upsertAdmin } = require("./src/utils/seed");
 
 const app = express();
 
@@ -22,8 +23,9 @@ const smtpServer = new SMTPServer({
 });
 
 MONGO()
-  .then(() => {
+  .then(async () => {
     console.log("Database Connected");
+    await upsertAdmin();
     smtpServer.listen(SMTP_PORT, () => {
       console.log("Email server up and running:", SMTP_PORT);
       app.listen(PORT, () => {
