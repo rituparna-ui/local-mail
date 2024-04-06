@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 import axios from "axios";
 
 import { authState } from "../../state/auth";
+import { baseAPI } from "../../../constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ const Login = () => {
 
   const login = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/auth/login", {
+      const res = await axios.post(`${baseAPI}/api/v1/auth/login`, {
         email,
         password,
       });
