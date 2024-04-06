@@ -36,8 +36,6 @@ exports.onRcptTo = (address, session, cb) => {
 exports.onData = (stream, session, cb) => {
   const body = [];
   stream.on("data", (data) => {
-    // const parsed = await simpleParser(data);
-    // await Mail.create(parsed);
     body.push(data);
   });
   stream.on("end", async () => {
