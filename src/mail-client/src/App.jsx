@@ -1,5 +1,13 @@
+import Main from "./components/Main";
+import Navbar from "./components/Navbar";
+
 function App() {
-  return <h1 className="text-3xl text-teal-600">Hello World !</h1>;
+  return (
+    <div className="flex flex-col h-full">
+      <Navbar />
+      <Main />
+    </div>
+  );
 }
 
 export default App;
