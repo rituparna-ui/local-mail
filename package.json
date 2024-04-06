@@ -4,7 +4,7 @@
   "description": "A local email server for testing",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ."
+    "test": "./devrun.sh"
   },
   "repository": {
     "type": "git",

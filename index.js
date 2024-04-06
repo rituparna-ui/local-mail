@@ -20,6 +20,8 @@ const app = express();
 app.use(express.json());
 app.use("/api/v1", apiRoutes);
 
+app.use(express.static("./src/mail-client/dist"));
+
 app.use(notFound);
 app.use(errorHandler);
 
