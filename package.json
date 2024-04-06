@@ -23,8 +23,10 @@
   "homepage": "https://github.com/rituparna-ui/local-mail#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
     "mailparser": "^3.6.9",
     "mongoose": "^8.3.0",
     "smtp-server": "^3.13.3"

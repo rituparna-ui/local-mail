@@ -1,5 +1,6 @@
 const { SMTPServer } = require("smtp-server");
 const express = require("express");
+const cors = require("cors");
 
 const MONGO = require("./src/utils/db");
 const { SMTP_PORT, PORT } = require("./configs/dev");
@@ -17,6 +18,7 @@ const errorHandler = require("./src/utils/errors/errorHandler");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1", apiRoutes);
 
