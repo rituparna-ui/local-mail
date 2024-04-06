@@ -33,6 +33,7 @@ const mailSchema = new mongoose.Schema({
     enum: ["normal", "high", "low"],
     default: "normal",
   },
+  isDeleted: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Mails", mailSchema);

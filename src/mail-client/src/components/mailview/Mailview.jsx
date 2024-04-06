@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 
 import { authState } from "./../../state/auth";
 import Login from "./Login";
+import MailList from "./MailList";
 
 const Mailview = () => {
   const { isAuth } = useRecoilValue(authState);
@@ -13,7 +14,7 @@ const Mailview = () => {
       </div>
     );
   }
-  return <div className="bg-slate-500 h-full"></div>;
+  return <MailList />;
 };
 
 export default Mailview;
